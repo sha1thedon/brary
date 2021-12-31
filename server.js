@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV !== 'production'){
-    require('dotenv').load()
+    require('dotenv').config()
 }
 const express = require ('express') //call express file
 const app = express()
@@ -9,7 +9,7 @@ const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
 const methodOverride = require('method-override')
 const bookRouter = require('./routes/books')
-const env = require('dotenv').config()
+//const env = require('dotenv').config()
 
 app.set('view engine', 'ejs')
 //set where views are coming from
@@ -22,7 +22,8 @@ app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser : true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
 const db = mongoose.connection
 db.on('error', error => console.error(error))
