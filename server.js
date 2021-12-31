@@ -7,6 +7,7 @@ const expressLayouts = require('express-ejs-layouts') //call layouts package
 const bodyParser = require('body-parser')
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
+const methodOverride = require('method-override')
 const bookRouter = require('./routes/books')
 const env = require('dotenv').config()
 
