@@ -5,7 +5,7 @@ const Author = require('../models/author')
 
 
 
-const imageMimeTypes = ['images/jpeg', 'images/png', 'images/gif']
+const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
 //all books route
 router.get('/', async(req, res) => {
@@ -15,11 +15,11 @@ router.get('/', async(req, res) => {
 
     }
     if (req.query.publishedBefore != null && req.query.publishedBefore != ''){
-        query = query.lte('publishedDate', req.query.publishedBefore)
+        query = query.lte('publishDate', req.query.publishedBefore)
         }
 
     if (req.query.publishedAfter != null && req.query.publishedAfter != ''){
-        query = query.gte('publishedDate', req.query.publishedAfter)
+        query = query.gte('publishDate', req.query.publishedAfter)
     }
    try{
        const books = await query.exec()
@@ -48,7 +48,7 @@ renderNewPage(res, new Book())
 
 //create book
 router.post('/',  async (req, res) => {
-   const fileName =  req.file != null ? req.file.filename : null
+   //const fileName =  req.file != null ? req.file.filename : null
     const book  = new Book({
         title: req.body.title,
         author: req.body.author,
@@ -128,7 +128,7 @@ router.put('/:id',  async (req, res) => {
         if (book != null){
         renderEditPage(res, book, true)}
         else{
-            redirect('/')
+            res.redirect('/')
         }
     }})
 

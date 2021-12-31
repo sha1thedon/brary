@@ -13,7 +13,7 @@ const bookRouter = require('./routes/books')
 
 app.set('view engine', 'ejs')
 //set where views are coming from
-app.set('views', __dirname + '/views')
+app.set('views', __dirname + '/view')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(methodOverride('_method'))

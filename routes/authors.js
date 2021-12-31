@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
 
     try{
         const newAuthor = await author.save()
-        res.redirect(`authors/$(newAuthor.id)`)
+        res.redirect(`authors/${newAuthor.id}`)
 
 
     }
@@ -90,7 +90,7 @@ router.put('/:id', async(req, res) => {
         author = await Author.findById (req.params.id)
         author.name = req.body.name
         await author.save()
-        res.redirect(`/authors/$(newAuthor.id)`)
+        res.redirect(`/authors/${author.id}`)
 
 
     }
